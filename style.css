@@ -1165,6 +1165,8 @@ body.reveal-ready .reveal.visible {
 
   .cart-panel {
     position: static;
+    order: -1;
+    scroll-margin-top: 96px;
   }
 
   .feature-grid,

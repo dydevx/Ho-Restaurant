@@ -6,6 +6,7 @@ const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
 
 const orderItemsEl = document.querySelector("#order-items");
+const cartPanelEl = document.querySelector(".cart-panel");
 const cartItemsEl = document.querySelector("#cart-items");
 const cartCountEl = document.querySelector("#cart-count");
 const cartTotalEl = document.querySelector("#cart-total");
@@ -230,6 +231,14 @@ const cartEntries = () =>
 
 const cartTotal = () => cartEntries().reduce((total, item) => total + item.price * item.quantity, 0);
 
+const scrollCartIntoViewOnMobile = () => {
+  if (!cartPanelEl || !window.matchMedia("(max-width: 980px)").matches) return;
+
+  requestAnimationFrame(() => {
+    cartPanelEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+};
+
 const buildWhatsAppMessage = () => {
   const name = document.querySelector("#customer-name")?.value.trim() || "-";
   const phone = document.querySelector("#customer-phone")?.value.trim() || "-";
@@ -308,9 +317,13 @@ const renderCart = () => {
   updateWhatsAppLink();
 };
 
-const addToCart = (id) => {
+const addToCart = (id, shouldShowCart = false) => {
   cart.set(id, (cart.get(id) || 0) + 1);
   renderCart();
+
+  if (shouldShowCart) {
+    scrollCartIntoViewOnMobile();
+  }
 };
 
 const decreaseCartItem = (id) => {
@@ -348,7 +361,7 @@ document.addEventListener("click", (event) => {
   const removeButton = event.target.closest("[data-remove]");
   const tabButton = event.target.closest(".order-tab");
 
-  if (addButton) addToCart(addButton.dataset.add);
+  if (addButton) addToCart(addButton.dataset.add, true);
   if (increaseButton) addToCart(increaseButton.dataset.increase);
   if (decreaseButton) decreaseCartItem(decreaseButton.dataset.decrease);
   if (removeButton) {

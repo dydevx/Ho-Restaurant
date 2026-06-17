@@ -15,7 +15,7 @@ const orderHintEl = document.querySelector("#order-hint");
 const orderInputs = document.querySelectorAll("#customer-name, #customer-phone, #order-type, #order-note");
 
 const whatsappNumber = "4982617393234";
-const menuItems = [
+const menuItems = window.hoMenuItems || [
   { id: "m1", category: "mittag", name: "M1. Rau Curry", description: "Saisongemüse, rote Kokosmilch-Currysoße, Reis.", price: 11 },
   { id: "m2", category: "mittag", name: "M2. Đậu Phụ Curry", description: "Gebratener Tofu, Saisongemüse, rote Kokosmilch-Currysoße, Reis.", price: 11 },
   { id: "m3", category: "mittag", name: "M3. Đậu Phụ Lá Quế", description: "Gebratener Tofu, Thai-Basilikum, Saisongemüse, Reis.", price: 11 },
@@ -235,7 +235,9 @@ const scrollCartIntoViewOnMobile = () => {
   if (!cartPanelEl || !window.matchMedia("(max-width: 980px)").matches) return;
 
   requestAnimationFrame(() => {
+    cartPanelEl.classList.add("is-highlighted");
     cartPanelEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(() => cartPanelEl.classList.remove("is-highlighted"), 1400);
   });
 };
 

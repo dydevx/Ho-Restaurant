@@ -104,6 +104,7 @@ window.hoMenuItems = [
   { id: "sn10b", category: "sushi-basic", name: "N10. Sakao Special Nigiri mit Avocado (2 Stk.)", description: "Flambierter Thunfisch mit Avocado.", price: 7.5 },
   { id: "ss9", category: "sushi-basic", name: "S9. Sake Sashimi", description: "Sashimi mit Lachs.", price: 18.9 },
   { id: "ss10", category: "sushi-basic", name: "S10. Maguro Sashimi", description: "Sashimi mit Thunfisch.", price: 19.9 },
+  { id: "ss11", category: "sushi-basic", name: "S11. Maguro to Sake Sashimi", description: "Sashimi mit Thunfisch und Lachs.", price: 19.9 },
 
   { id: "sx1", category: "sushi-rolls", name: "M1. Hiro Sushi Mix", description: "4 Nigiri und 1 Inside Out.", price: 17.9 },
   { id: "sx2", category: "sushi-rolls", name: "M2. Tokyo Sushi Mix", description: "4 Nigiri, 1 Inside Out und Sashimi.", price: 24.9 },

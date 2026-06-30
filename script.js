@@ -14,7 +14,7 @@ const whatsappOrderEl = document.querySelector("#whatsapp-order");
 const orderHintEl = document.querySelector("#order-hint");
 const orderInputs = document.querySelectorAll("#customer-name, #customer-phone, #order-type, #order-note");
 
-const whatsappNumber = "4982617393234";
+const whatsappNumber = "491638639835";
 const menuItems = window.hoMenuItems || [
   { id: "m1", category: "mittag", name: "M1. Rau Curry", description: "Saisongemüse, rote Kokosmilch-Currysoße, Reis.", price: 11 },
   { id: "m2", category: "mittag", name: "M2. Đậu Phụ Curry", description: "Gebratener Tofu, Saisongemüse, rote Kokosmilch-Currysoße, Reis.", price: 11 },
@@ -269,7 +269,7 @@ const updateWhatsAppLink = () => {
   if (!cart.size) {
     whatsappOrderEl.classList.add("disabled");
     whatsappOrderEl.setAttribute("href", "#bestellen");
-    orderHintEl.textContent = "Bitte wählen Sie mindestens ein Gericht aus.";
+    orderHintEl.textContent = "Bitte wählen Sie mindestens einen Artikel aus.";
     return;
   }
 
@@ -288,7 +288,7 @@ const renderCart = () => {
   cartTotalEl.textContent = formatPrice(cartTotal());
 
   if (!entries.length) {
-    cartItemsEl.innerHTML = '<p class="cart-empty">Noch keine Gerichte ausgewählt.</p>';
+    cartItemsEl.innerHTML = '<p class="cart-empty">Noch keine Auswahl getroffen.</p>';
     updateWhatsAppLink();
     return;
   }

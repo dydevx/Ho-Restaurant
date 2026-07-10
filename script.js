@@ -212,9 +212,9 @@ const renderMenuItems = (category = "mittag") => {
             <p>${item.description}</p>
           </div>
           <div class="order-item-footer">
-            <span class="order-price">${formatPrice(item.price)}</span>
+            <span class="order-price">${item.price === null ? "–" : formatPrice(item.price)}</span>
             <button class="order-add" type="button" data-add="${item.id}" aria-label="${item.name} hinzufügen">
-              <i class="fa-solid fa-plus"></i>
+              ${item.price === null ? "–" : '<i class="fa-solid fa-plus"></i>'}
             </button>
           </div>
         </article>
@@ -320,6 +320,8 @@ const renderCart = () => {
 };
 
 const addToCart = (id, shouldShowCart = false) => {
+  if (menuItems.find((item) => item.id === id)?.price === null) return;
+
   cart.set(id, (cart.get(id) || 0) + 1);
   renderCart();
 

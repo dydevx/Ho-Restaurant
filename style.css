@@ -1135,6 +1135,21 @@ h3 {
   letter-spacing: 0;
 }
 
+.lookbook-new-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.lookbook-new-grid .lookbook-tile {
+  min-height: 360px;
+}
+
+.lookbook-new-grid img {
+  object-position: center;
+}
+
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.78fr);
@@ -1493,6 +1508,10 @@ body.reveal-ready .reveal.visible {
   }
 
   .lookbook-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .lookbook-new-grid {
     grid-template-columns: 1fr;
   }
 
